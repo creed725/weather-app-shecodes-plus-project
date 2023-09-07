@@ -1,0 +1,135 @@
+body {
+  background-image: url("../images/KC.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  font-size: 40px;
+  font-weight: 700;
+  background-position: top;
+
+  color: #ffff;
+}
+
+h1 {
+  margin: 0 auto;
+  text-align: center;
+  top: 0;
+  width: 100%;
+}
+
+h2 {
+  background: #ca6b3a;
+  text-align: center;
+}
+
+p {
+  text-align: center;
+}
+
+.buttons {
+  position: relative;
+  font-size: 25px;
+  float: left;
+}
+
+.card {
+  background: rgba(0, 0, 0, 0.6);
+  border: solid #3369a5;
+  border-radius: 29px;
+  box-shadow: -5px -5px 9px rgba(255, 255, 255, 0.5),
+    5px 5px 9px rgba(94, 104, 121, 0.3);
+}
+
+.card-body {
+  color: white;
+}
+
+.card-footer,
+.time-day {
+  text-align: center;
+  color: white;
+}
+
+.card-group {
+  border-radius: 29px;
+}
+
+.container {
+  text-align: right;
+  border: none;
+  padding: 100px;
+  font-family: "Source Code Pro", monospace;
+}
+
+.current-location {
+  font-size: 20px;
+  margin-top: 0.5px;
+  text-align: left;
+}
+
+.fa-cloud {
+  color: #7f8384;
+}
+
+.fa-cloud-showers-heavy {
+  color: #355988;
+}
+
+.fa-cloud-sun {
+  color: #7f8384;
+}
+
+.Five-Day {
+  background-color: #2d6884;
+  border: none;
+  border-radius: 40px;
+  color: black;
+  font-size: 35px;
+}
+
+.Hourly {
+  background-color: #2d6884;
+  border: none;
+  border-radius: 40px;
+  color: black;
+  font-size: 35px;
+}
+
+.location-time {
+  text-align: right;
+  font-size: 25px;
+}
+
+::placeholder {
+  color: grey;
+  font-size: 25px;
+}
+
+.precip,
+.wind {
+  font-size: 35px;
+}
+
+.sunny {
+  font-size: 300px;
+  color: orange;
+  float: top;
+  position: relative;
+  bottom: 50px;
+  right: 350px;
+}
+
+.row {
+  border: none;
+}
+
+.time-day {
+  border-radius: 39px;
+  font-size: 25px;
+}
+
+.Weather {
+  color: white;
+  font-size: 50px;
+  padding-bottom: 30px;
+}
