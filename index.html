@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SheCodes Plus Week 4 Homework</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://kit.fontawesome.com/d507ff8bff.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="src/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="card-group">
+            <div class="card">
+              <div class="card-body">
+                <h1 class="Weather">
+                  <span> Weather</span>
+                </h1>
+                <div class="buttons">
+                  <form id="search-form">
+                    <input
+                      type="text"
+                      placeholder="Enter a City, State"
+                      autocomplete="off"
+                      autofocus="on"
+                      id="search-input"
+                    />
+                    <p class="current-location">
+                      <button
+                        type="submit"
+                        class="btn btn-primary"
+                        id="search-button"
+                      >
+                        Search
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        id="current-locationbtn"
+                      >
+                        Current Location
+                      </button>
+                    </p>
+                  </form>
+                </div>
+
+                <div class="location-time">
+                  <span id="city"> Kansas City, Missouri </span> <br />
+                  <span id="time"> 08:59 AM </span> <br />
+                  H:<span id="current-HighTemp">85</span> L:<span
+                    id="current-LowTemp"
+                    >70
+                  </span>
+                  <br />
+                  <span id="celciusLink"> °C </span>|
+                  <span id="fahrenheitLink"> °F </span>
+                </div>
+                <i class="fa-regular fa-sun fa-solid fa-sync sunny"> </i>
+
+                <div class="row">
+                  <div class="col-5">
+                    <span class="precip"> Precipitation: 0% </span>
+                  </div>
+                  <div class="col-7">
+                    <span class="wind"> Wind: 0 mph </span>
+                  </div>
+                </div>
+
+                <h1 class="Hourly Forecast border border-5">
+                  <span class="Hourly"> Hourly Forecast </span>
+                </h1>
+                <div class="card-group">
+                  <div class="card">
+                    <div class="card-body">
+                      <h2 class="time-day">Now</h2>
+                      <p class="card-text">☀️</p>
+                    </div>
+
+                    <div class="card-footer">
+                      <small class="degree">82°</small>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-body">
+                      <h2 class="time-day">10 AM</h2>
+                      <p class="card-text">
+                        <i class="fa-solid fa-cloud-sun"></i>
+                      </p>
+                    </div>
+
+                    <div class="card-footer">
+                      <small class="degree">80°</small>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-body">
+                      <h2 class="time-day">11 AM</h2>
+                      <p class="card-text">
+                        <i class="fa-solid fa-cloud"></i>
+                      </p>
+                    </div>
+
+                    <div class="card-footer">
+                      <small class="degree">78°</small>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-body">
+                      <h2 class="time-day">12 PM</h2>
+                      <p class="card-text"><i class="fa-solid fa-cloud"></i></p>
+                    </div>
+
+                    <div class="card-footer">
+                      <small class="degree">76°</small>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-body">
+                      <h2 class="time-day">1 PM</h2>
+                      <p class="card-text">
+                        <i class="fa-solid fa-cloud-showers-heavy"></i>
+                      </p>
+                    </div>
+
+                    <div class="card-footer">
+                      <small class="degree">74°</small>
+                    </div>
+                  </div>
+                </div>
+
+                <h1 class="Five-Day Forecast border border-5">
+                  <span class="Five-Day"> 5-Day Forecast</span>
+                </h1>
+                <div class="card-group">
+                  <div class="card">
+                    <div class="card-body">
+                      <h2 class="time-day">FRI</h2>
+                      <p class="card-text">
+                        <i class="fa-solid fa-cloud-showers-heavy"></i>
+                      </p>
+                    </div>
+
+                    <div class="card-footer">
+                      <small class="degree">77°/73°</small>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-body">
+                      <h2 class="time-day">SAT</h2>
+                      <p class="card-text">
+                        <i class="fa-solid fa-cloud-showers-heavy"></i>
+                      </p>
+                    </div>
+
+                    <div class="card-footer">
+                      <small class="degree">76°/72°</small>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-body">
+                      <h2 class="time-day">SUN</h2>
+                      <p class="card-text">
+                        <i class="fa-solid fa-cloud-showers-heavy"></i>
+                      </p>
+                    </div>
+
+                    <div class="card-footer">
+                      <small class="degree">78°/74°</small>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-body">
+                      <h2 class="time-day">MON</h2>
+                      <p class="card-text">☀️</p>
+                    </div>
+
+                    <div class="card-footer">
+                      <small class="degree">92°/75°</small>
+                    </div>
+                  </div>
+
+                  <div class="card">
+                    <div class="card-body">
+                      <h2 class="time-day">TUES</h2>
+                      <p class="card-text">☀️</p>
+                    </div>
+                    <div class="card-footer">
+                      <small class="degree">100°/78°</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="src/index.js"></script>
+  </body>
+</html>
