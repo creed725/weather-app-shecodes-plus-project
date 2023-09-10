@@ -26,6 +26,18 @@ p {
   text-align: center;
 }
 
+a {
+  text-decoration: none;
+  color: #f57018;
+}
+
+#author {
+  text-align: center;
+  text-decoration: none;
+  font-family: "Source Code Pro", monospace;
+  font-weight: bold;
+  color: #ffff;
+}
 .buttons {
   position: relative;
   font-size: 25px;
