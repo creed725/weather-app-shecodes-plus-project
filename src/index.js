@@ -21,6 +21,12 @@ function displayTemperature(response) {
   let currentLow = Math.round(response.data.main.temp_min);
   let currentLowTemp = document.querySelector("#current-LowTemp");
   currentLowTemp.innerHTML = `${currentLow}`;
+  let iconElement = document.querySelector("#icon");
+
+  iconElement.setAttribute(
+    "i",
+    "https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png"
+  );
 }
 
 function showPosition(position) {
