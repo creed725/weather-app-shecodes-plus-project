@@ -79,6 +79,10 @@ a {
   text-align: left;
 }
 
+#description {
+  text-transform: capitalize;
+}
+
 .fa-cloud {
   color: #7f8384;
 }
