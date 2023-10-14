@@ -73,19 +73,17 @@ function displayForecast() {
   <h1 class="Five-Day Forecast border border-5">
   <span class="Five-Day"> 5-Day Forecast</span> 
   </h1>`;
-  let days = ["Sun", "Mon", "Tues", "Wed", "Thur","Fri","Sat"];
-  days.forEach(function(day){
-
-  })
-  forecastHTML =
-    forecastHTML +
-    `
+  let days = ["Sun", "Mon", "Tues", "Wed", "Thur"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
                 <div class="card-group">
                   <div class="card">
                     <div class="card-body">
                       <h2 class="time-day">
                         <div class="weather-forecast-date">
-                        FRI
+                        ${day}
                         </div>
                       </h2>
                       <p class="card-text">
@@ -104,6 +102,7 @@ function displayForecast() {
                     </div>
                   </div>
              </div>`;
+  });
 
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
