@@ -13,7 +13,7 @@ function searchCity(city) {
 function getForecast(coordinates) {
   console.log(coordinates);
   let apiKey = "6f578b96aa9505bcce148ac22cb85794";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperical`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(displayForecast);
 }
 function displayTemperature(response) {
@@ -74,7 +74,8 @@ let days = [
 ];
 
 function displayForecast(response) {
-  console.log(response.data.daily);
+  let forecast = response.data.daily;
+
   let forecastElement = document.querySelector("#daily-forecast");
 
   let forecastHTML = `<div class="row"> 
@@ -82,7 +83,7 @@ function displayForecast(response) {
   <span class="Five-Day"> 5-Day Forecast</span> 
   </h1>`;
 
-  days.forEach(function (day) {
+  forecast.forEach(function (forecastDay) {
     forecastHTML =
       forecastHTML +
       `
@@ -91,11 +92,11 @@ function displayForecast(response) {
                     <div class="card-body">
                       <h2 class="time-day">
                         <div class="weather-forecast-date">
-                        ${day}
+                        ${forecastDay.dt}
                         </div>
                       </h2>
                       <p class="card-text">
-                        <img src="" id="icon" class="fa-solid fa-cloud-showers-heavy"> </img>
+                        <img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" id="icon"  </img>
                       </p>
                     </div>
 
@@ -103,7 +104,7 @@ function displayForecast(response) {
                       <small class="degree">
                       <div class="weather-forecast-temperatures">  
                        <span class="weather-forecast-temperature-max">
-                        77°</span>/<span class="weather-forecast-temperature-min">73°
+                        ${forecastDay.temp.max}°</span>/<span class="weather-forecast-temperature-min">${forecastDay.temp.min}°
                       </span>
                       </div>
                       </small>
