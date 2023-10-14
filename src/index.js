@@ -73,6 +73,10 @@ function displayForecast() {
   <h1 class="Five-Day Forecast border border-5">
   <span class="Five-Day"> 5-Day Forecast</span> 
   </h1>`;
+  let days = ["Sun", "Mon", "Tues", "Wed", "Thur","Fri","Sat"];
+  days.forEach(function(day){
+
+  })
   forecastHTML =
     forecastHTML +
     `
