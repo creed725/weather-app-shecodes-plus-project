@@ -101,33 +101,6 @@ function displayForecast() {
                   </div>
              </div>`;
 
-  forecastHTML =
-    forecastHTML +
-    `
-                <div class="card-group">
-                  <div class="card">
-                    <div class="card-body">
-                      <h2 class="time-day">
-                        <div class="weather-forecast-date">
-                        FRI
-                        </div>
-                      </h2>
-                      <p class="card-text">
-                        <img src="" id="icon" class="fa-solid fa-cloud-showers-heavy"> </img>
-                      </p>
-                    </div>
-
-                    <div class="card-footer">
-                      <small class="degree">
-                      <div class="weather-forecast-temperatures">  
-                       <span class="weather-forecast-temperature-max">
-                        77°</span>/<span class="weather-forecast-temperature-min">73°
-                      </span>
-                      </div>
-                      </small>
-                    </div>
-                  </div>
-             </div>`;
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
