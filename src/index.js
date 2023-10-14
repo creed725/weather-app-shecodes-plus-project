@@ -66,13 +66,16 @@ let days = [
   "Saturday",
 ];
 
-function displayForecast(){
+function displayForecast() {
   let forecastElement = document.querySelector("#daily-forecast");
 
-  let forecastHTML = "";
-  forecastHTML = `<h1 class="Five-Day Forecast border border-5">
-                  <span class="Five-Day"> 5-Day Forecast</span>
-                </h1>
+  let forecastHTML = `<div class="row"> 
+  <h1 class="Five-Day Forecast border border-5">
+  <span class="Five-Day"> 5-Day Forecast</span> 
+  </h1>`;
+  forecastHTML =
+    forecastHTML +
+    `
                 <div class="card-group">
                   <div class="card">
                     <div class="card-body">
@@ -96,10 +99,37 @@ function displayForecast(){
                       </small>
                     </div>
                   </div>
-                  
-        </div>`;
-  forecastElement.innerHTML = forecastHTML
+             </div>`;
 
+  forecastHTML =
+    forecastHTML +
+    `
+                <div class="card-group">
+                  <div class="card">
+                    <div class="card-body">
+                      <h2 class="time-day">
+                        <div class="weather-forecast-date">
+                        FRI
+                        </div>
+                      </h2>
+                      <p class="card-text">
+                        <img src="" id="icon" class="fa-solid fa-cloud-showers-heavy"> </img>
+                      </p>
+                    </div>
+
+                    <div class="card-footer">
+                      <small class="degree">
+                      <div class="weather-forecast-temperatures">  
+                       <span class="weather-forecast-temperature-max">
+                        77°</span>/<span class="weather-forecast-temperature-min">73°
+                      </span>
+                      </div>
+                      </small>
+                    </div>
+                  </div>
+             </div>`;
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
 }
 let currentDay = days[now.getDay()];
 let currentTime = document.querySelector("#time");
