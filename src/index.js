@@ -94,7 +94,7 @@ function displayHourlyforecast(response) {
       hourlyforecastHTML =
         hourlyforecastHTML +
         `
-                <div class="card-group">
+                <div class="card-group col">
                   <div class="card">
                     <div class="card-body">
                       <h2 class="time-day">
