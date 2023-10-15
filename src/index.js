@@ -95,7 +95,7 @@ function displayForecast(response) {
       forecastHTML =
         forecastHTML +
         `
-                <div class="card-group">
+                <div class="card-group col">
                   <div class="card">
                     <div class="card-body">
                       <h2 class="time-day">
@@ -158,3 +158,5 @@ let fahrenheitLink = document.querySelector("#fahrenheitLink");
 fahrenheitLink.addEventListener("click", convertToFahrenheit);
 let celciusLink = document.querySelector("#celciusLink");
 celciusLink.addEventListener("click", convertToCelcius);
+
+searchCity("Kansas City");
