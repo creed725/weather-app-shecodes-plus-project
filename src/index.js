@@ -114,70 +114,7 @@ function displayHourlyforecast() {
                       )}°</small>
                     </div>
                   </div>
-                  <div class="card">
-                    <div class="card-body">
-                      <h2 class="time-day">
-                      <div class="weather-forecast-hour">  
-                        10 AM
-                      </div>
-                      </h2>
-                      <p class="card-text">
-                        <img src="" id="icon" class="fa-solid fa-cloud-sun"> </img>
-                      </p>
-                    </div>
-
-                    <div class="card-footer">
-                      <small class="degree">80°</small>
-                    </div>
-                  </div>
-                  <div class="card">
-                    <div class="card-body">
-                      <h2 class="time-day">
-                      <div class="weather-forecast-hour">  
-                        11 AM
-                      </div>
-                      </h2>
-                      <p class="card-text">
-                        <img src="" id="icon" class="fa-solid fa-cloud"></img>
-                      </p>
-                    </div>
-
-                    <div class="card-footer">
-                      <small class="degree">78°</small>
-                    </div>
-                  </div>
-                  <div class="card">
-                    <div class="card-body">
-                      <h2 class="time-day">
-                      <div class="weather-forecast-hour">
-                        12 PM
-                      </div>  
-                      </h2>
-                      <p class="card-text">
-                        <img src="" id="icon" class="fa-solid fa-cloud"> </img>
-                      </p>
-                    </div>
-
-                    <div class="card-footer">
-                      <small class="degree">76°</small>
-                    </div>
-                  </div>
-                  <div class="card">
-                    <div class="card-body">
-                      <h2 class="time-day">
-                      <div class="weather-forecast-hour">
-                        1 PM
-                      </div>  
-                      </h2>
-                      <p class="card-text">
-                        <img src="" id="icon" class="fa-solid fa-cloud-showers-heavy"> </img>
-                      </p>
-                    </div>
-
-                    <div class="card-footer">
-                      <small class="degree">74°</small>
-                    </div>
-                  </div>
+                  
                 </div>
   `;
     }
