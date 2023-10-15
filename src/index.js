@@ -75,7 +75,7 @@ let days = [
 
 function formatHour(timestamp) {
   let hour = new Hour(timestamp * 1000);
-  let dailyhour = hour.getHour();
+  let dailyhour = hour.getHours();
   let hours = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
 
   return hours[dailyhour];
@@ -88,22 +88,30 @@ function displayHourlyforecast() {
                   <span class="Hourly"> Hourly Forecast </span>
                 </h1>`;
 
-  hourlyforecastHTML = `
+  forecast.forEach(function (forecastHour, index) {
+    if (index < 12) {
+      hourlyforecastHTML =
+        hourlyforecastHTML +
+        `
                 <div class="card-group">
                   <div class="card">
                     <div class="card-body">
                       <h2 class="time-day">
                       <div class="weather-forecast-hour">
-                        Now
+                        ${formatHour(forecastHour.dt)}
                       </div>
                       </h2>
                       <p class="card-text">
-                        <img src="" id="icon" class="fa-solid fa-cloud-showers-heavy"> </img>
+                        <img src="http://openweathermap.org/img/wn/${
+                          forecastHour.weather[0].icon
+                        }@2x.png" id="icon" </img>
                       </p>
                     </div>
 
                     <div class="card-footer">
-                      <small class="degree">82°</small>
+                      <small class="degree">${Math.round(
+                        forecastHour.temp
+                      )}°</small>
                     </div>
                   </div>
                   <div class="card">
@@ -172,6 +180,8 @@ function displayHourlyforecast() {
                   </div>
                 </div>
   `;
+    }
+  });
   hourlyforecastHTML = hourlyforecastHTML + `</div>`;
   hourlyforecastElement.innerHTML = hourlyforecastHTML;
 }
