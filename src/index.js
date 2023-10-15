@@ -73,13 +73,21 @@ let days = [
   "Saturday",
 ];
 
+function formatHour() {
+  let hour = new Hour();
+  let dailyhour = hour.getHour();
+  let hours = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
+
+  return hours[dailyhour];
+}
 function displayHourlyforecast() {
   let hourlyforecastElement = document.querySelector("#hour-forecast");
 
-  let hourlyforecastHTML = `<div class ="row">
+  let hourlyforecastHTML = `<div class="row">
                 <h1 class="Hourly Forecast border border-5">
                   <span class="Hourly"> Hourly Forecast </span>
                 </h1>`;
+
   hourlyforecastHTML = `
                 <div class="card-group">
                   <div class="card">
@@ -175,6 +183,7 @@ function formatDay(timestamp) {
   return days[day];
 }
 function displayForecast(response) {
+  console.log(response.data);
   let forecast = response.data.daily;
 
   let forecastElement = document.querySelector("#daily-forecast");
