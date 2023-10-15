@@ -73,8 +73,8 @@ let days = [
   "Saturday",
 ];
 
-function formatHour() {
-  let hour = new Hour();
+function formatHour(timestamp) {
+  let hour = new Hour(timestamp * 1000);
   let dailyhour = hour.getHour();
   let hours = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
 
