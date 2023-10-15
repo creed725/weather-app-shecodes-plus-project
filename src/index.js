@@ -74,13 +74,14 @@ let days = [
 ];
 
 function formatHour(timestamp) {
-  let hour = new Hour(timestamp * 1000);
+  let hour = new Date(timestamp * 1000);
   let dailyhour = hour.getHours();
   let hours = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
 
   return hours[dailyhour];
 }
-function displayHourlyforecast() {
+function displayHourlyforecast(response) {
+  let hourlyforecast = response.data.hourly;
   let hourlyforecastElement = document.querySelector("#hour-forecast");
 
   let hourlyforecastHTML = `<div class="row">
