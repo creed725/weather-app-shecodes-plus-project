@@ -76,11 +76,11 @@ let days = [
 function displayHourlyforecast() {
   let hourlyforecastElement = document.querySelector("#hour-forecast");
 
-  let hourlyforecastHTML = "";
-  hourlyforecastHTML = `<div class="hourly-forecast">
+  let hourlyforecastHTML = `<div class ="row">
                 <h1 class="Hourly Forecast border border-5">
                   <span class="Hourly"> Hourly Forecast </span>
-                </h1>
+                </h1>`;
+  hourlyforecastHTML = `
                 <div class="card-group">
                   <div class="card">
                     <div class="card-body">
@@ -164,6 +164,7 @@ function displayHourlyforecast() {
                   </div>
                 </div>
   `;
+  hourlyforecastHTML = hourlyforecastHTML + `</div>`;
   hourlyforecastElement.innerHTML = hourlyforecastHTML;
 }
 function formatDay(timestamp) {
@@ -253,3 +254,4 @@ let celciusLink = document.querySelector("#celciusLink");
 celciusLink.addEventListener("click", convertToCelcius);
 
 searchCity("Kansas City");
+displayHourlyforecast();
