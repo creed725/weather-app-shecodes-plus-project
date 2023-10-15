@@ -73,6 +73,99 @@ let days = [
   "Saturday",
 ];
 
+function displayHourlyforecast() {
+  let hourlyforecastElement = document.querySelector("#hour-forecast");
+
+  let hourlyforecastHTML = "";
+  hourlyforecastHTML = `<div class="hourly-forecast">
+                <h1 class="Hourly Forecast border border-5">
+                  <span class="Hourly"> Hourly Forecast </span>
+                </h1>
+                <div class="card-group">
+                  <div class="card">
+                    <div class="card-body">
+                      <h2 class="time-day">
+                      <div class="weather-forecast-hour">
+                        Now
+                      </div>
+                      </h2>
+                      <p class="card-text">
+                        <img src="" id="icon" class="fa-solid fa-cloud-showers-heavy"> </img>
+                      </p>
+                    </div>
+
+                    <div class="card-footer">
+                      <small class="degree">82°</small>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-body">
+                      <h2 class="time-day">
+                      <div class="weather-forecast-hour">  
+                        10 AM
+                      </div>
+                      </h2>
+                      <p class="card-text">
+                        <img src="" id="icon" class="fa-solid fa-cloud-sun"> </img>
+                      </p>
+                    </div>
+
+                    <div class="card-footer">
+                      <small class="degree">80°</small>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-body">
+                      <h2 class="time-day">
+                      <div class="weather-forecast-hour">  
+                        11 AM
+                      </div>
+                      </h2>
+                      <p class="card-text">
+                        <img src="" id="icon" class="fa-solid fa-cloud"></img>
+                      </p>
+                    </div>
+
+                    <div class="card-footer">
+                      <small class="degree">78°</small>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-body">
+                      <h2 class="time-day">
+                      <div class="weather-forecast-hour">
+                        12 PM
+                      </div>  
+                      </h2>
+                      <p class="card-text">
+                        <img src="" id="icon" class="fa-solid fa-cloud"> </img>
+                      </p>
+                    </div>
+
+                    <div class="card-footer">
+                      <small class="degree">76°</small>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-body">
+                      <h2 class="time-day">
+                      <div class="weather-forecast-hour">
+                        1 PM
+                      </div>  
+                      </h2>
+                      <p class="card-text">
+                        <img src="" id="icon" class="fa-solid fa-cloud-showers-heavy"> </img>
+                      </p>
+                    </div>
+
+                    <div class="card-footer">
+                      <small class="degree">74°</small>
+                    </div>
+                  </div>
+                </div>
+  `;
+  hourlyforecastElement.innerHTML = hourlyforecastHTML;
+}
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
   let day = date.getDay();
