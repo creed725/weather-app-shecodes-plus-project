@@ -81,9 +81,8 @@ let days = [
 function formatHour(timestamp) {
   let hour = new Date(timestamp * 1000);
   let dailyhour = hour.getHours();
-  let hours = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
 
-  return hours[dailyhour];
+  return dailyhour;
 }
 function displayHourlyforecast(hourlyData) {
   let hourlyforecastElement = document.querySelector("#hour-forecast");
@@ -93,7 +92,9 @@ function displayHourlyforecast(hourlyData) {
                   <span class="Hourly"> Hourly Forecast </span>
                 </h1>`;
 
-  hourlyData.slice(0, 12).forEach((forecastHour) => {
+  hourlyData = hourlyData.slice(0, 5);
+  hourlyData.forEach((forecastHour) => {
+    console.log({ forecastHour });
     hourlyforecastHTML += `
                 <div class="card-group col">
                   <div class="card">
@@ -211,4 +212,3 @@ let celciusLink = document.querySelector("#celciusLink");
 celciusLink.addEventListener("click", convertToCelcius);
 
 searchCity("Kansas City");
-displayHourlyforecast();
