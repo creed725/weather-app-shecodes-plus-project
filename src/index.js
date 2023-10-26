@@ -30,6 +30,8 @@ function displayTemperature(response) {
   let currentLowTemp = document.querySelector("#current-LowTemp");
   currentLowTemp.innerHTML = `${currentLow}`;
   let iconElement = document.querySelector("#icon");
+  lowTemp = response.data.main.temp_min;
+  highTemp = response.data.main.temp_max;
 
   iconElement.setAttribute(
     "src",
