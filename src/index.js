@@ -198,7 +198,7 @@ function convertToFahrenheit(event) {
   tConversion.innerHTML = Math.round(lowTemp);
 }
 
-function convertToCelcius(event) {
+function convertToCelsius(event) {
   event.preventDefault();
   let tempConversion = document.querySelector("#current-HighTemp");
   let tConversion = document.querySelector("#current-LowTemp");
@@ -208,7 +208,7 @@ function convertToCelcius(event) {
 
 let fahrenheitLink = document.querySelector("#fahrenheitLink");
 fahrenheitLink.addEventListener("click", convertToFahrenheit);
-let celciusLink = document.querySelector("#celciusLink");
-celciusLink.addEventListener("click", convertToCelcius);
+let celsiusLink = document.querySelector("#celsiusLink");
+celsiusLink.addEventListener("click", convertToCelsius);
 
 searchCity("Kansas City");
