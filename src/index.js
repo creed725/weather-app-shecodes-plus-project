@@ -16,7 +16,6 @@ function getForecast(coordinates) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperial`;
   axios.get(apiUrl).then((response) => {
     displayForecast(response);
-
     displayHourlyforecast(response.data.hourly); //Display hourly forecast
   });
 }
@@ -84,8 +83,7 @@ function formatHour(timestamp) {
 
   return hours[dailyhour];
 }
-function displayHourlyforecast(response) {
-  let hourlyforecast = response.data.hourly;
+function displayHourlyforecast(hourlyData) {
   let hourlyforecastElement = document.querySelector("#hour-forecast");
 
   let hourlyforecastHTML = `<div class="row">
@@ -93,11 +91,8 @@ function displayHourlyforecast(response) {
                   <span class="Hourly"> Hourly Forecast </span>
                 </h1>`;
 
-  forecast.forEach(function (forecastHour, index) {
-    if (index < 12) {
-      hourlyforecastHTML =
-        hourlyforecastHTML +
-        `
+  hourlyData.slice(0, 12).forEach((forecastHour) => {
+    hourlyforecastHTML += `
                 <div class="card-group col">
                   <div class="card">
                     <div class="card-body">
@@ -122,9 +117,8 @@ function displayHourlyforecast(response) {
                   
                 </div>
   `;
-    }
   });
-  hourlyforecastHTML = hourlyforecastHTML + `</div>`;
+  hourlyforecastHTML += `</div>`;
   hourlyforecastElement.innerHTML = hourlyforecastHTML;
 }
 function formatDay(timestamp) {
