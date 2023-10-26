@@ -191,16 +191,16 @@ function convertToFahrenheit(event) {
   event.preventDefault();
   let tempConversion = document.querySelector("#current-HighTemp");
   let tConversion = document.querySelector("#current-LowTemp");
-  tempConversion.innerHTML = 66;
-  tConversion.innerHTML = 60;
+  tempConversion.innerHTML = Math.round(highTemp);
+  tConversion.innerHTML = Math.round(lowTemp);
 }
 
 function convertToCelcius(event) {
   event.preventDefault();
   let tempConversion = document.querySelector("#current-HighTemp");
   let tConversion = document.querySelector("#current-LowTemp");
-  tempConversion.innerHTML = 25;
-  tConversion.innerHTML = 28;
+  tempConversion.innerHTML = Math.round(((highTemp - 32) * 5) / 9);
+  tConversion.innerHTML = Math.round(((lowTemp - 32) * 5) / 9);
 }
 
 let fahrenheitLink = document.querySelector("#fahrenheitLink");
