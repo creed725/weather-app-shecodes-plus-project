@@ -78,13 +78,21 @@ let days = [
   "Saturday",
 ];
 
+function formatAMPM(date) {
+  let hours = date.getHours();
+  let ampm = hours >= 12 ? "pm" : "am";
+  hours = hours % 12;
+  hours = hours ? hours : 12;
+  let strTime = hours + ampm;
+  return strTime;
+}
 function formatHour(timestamp) {
-  let hour = new Date(timestamp * 1000);
-  //console.log(date.toLocaleTimeString("en-US"));
-  let dailyhour = hour.getHours();
+  let date = new Date(timestamp * 1000);
+  let dailyhour = formatAMPM(date);
 
   return dailyhour;
 }
+
 function displayHourlyforecast(hourlyData) {
   let hourlyforecastElement = document.querySelector("#hour-forecast");
 
