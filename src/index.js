@@ -103,7 +103,6 @@ function displayHourlyforecast(hourlyData) {
 
   hourlyData = hourlyData.slice(0, 5);
   hourlyData.forEach((forecastHour) => {
-    //console.log(date.toLocaleTimeString("en-US"), { forecastHour });
     console.log({ forecastHour });
     hourlyforecastHTML += `
                 <div class="card-group col">
