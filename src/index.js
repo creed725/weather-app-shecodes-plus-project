@@ -80,6 +80,7 @@ let days = [
 
 function formatHour(timestamp) {
   let hour = new Date(timestamp * 1000);
+  //console.log(date.toLocaleTimeString("en-US"));
   let dailyhour = hour.getHours();
 
   return dailyhour;
@@ -94,6 +95,7 @@ function displayHourlyforecast(hourlyData) {
 
   hourlyData = hourlyData.slice(0, 5);
   hourlyData.forEach((forecastHour) => {
+    //console.log(date.toLocaleTimeString("en-US"), { forecastHour });
     console.log({ forecastHour });
     hourlyforecastHTML += `
                 <div class="card-group col">
