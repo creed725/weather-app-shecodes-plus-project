@@ -195,8 +195,8 @@ function displayForecast(response) {
 }
 let currentDay = days[now.getDay()];
 let currentTime = document.querySelector("#time");
-currentTime.innerHTML = `${currentDay},${hours}:${minutes}`;
-//currentTime.innerHTML = `${currentDay},${formatHour(hours)}:${minutes}`;
+//currentTime.innerHTML = `${currentDay},${hours}:${minutes}`;
+currentTime.innerHTML = `${currentDay},${formatHour(hours)}:${minutes}`;
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", search);
 
