@@ -84,20 +84,13 @@ a {
 }
 
 #icon{
-  width: 200px;
+  bottom: 10px;
+  float: top;
   height: 200px;
-}
-
-.fa-cloud {
-  color: #7f8384;
-}
-
-.fa-cloud-showers-heavy {
-  color: #355988;
-}
-
-.fa-cloud-sun {
-  color: #7f8384;
+  position: relative;
+  right: 400px;
+  width: 200px;
+  
 }
 
 .Five-Day {
@@ -126,18 +119,8 @@ a {
   font-size: 25px;
 }
 
-.precip,
-.wind {
+#precip, #wind {
   font-size: 35px;
-}
-
-.sunny {
-  font-size: 300px;
-  color: orange;
-  float: top;
-  position: relative;
-  bottom: 50px;
-  right: 350px;
 }
 
 .row {
