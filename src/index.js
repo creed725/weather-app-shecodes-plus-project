@@ -193,11 +193,29 @@ function displayForecast(response) {
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
-let currentDay = days[now.getDay()];
+function formatTime(){
+let now = new Date();
+let currentDay = now.getDay();
+let hours = now.getHours().toString().padStart(2, "0");
+let minutes = now.getMinutes().toString().padStart(2, "0");
+
+let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+let currentDayName = days[currentDay];
+
+let period = "AM";
+if (hours >= 12) {
+  period = "PM";
+  if (hours > 12) {
+    hours -= 12;
+  }
+}
 let currentTime = document.querySelector("#time");
-currentTime.innerHTML = `${currentDay},${hours}:${minutes}`;
+currentTime.innerHTML = `${currentDayName}, ${hours}:${minutes} ${period}`;
+}
+formatTime();
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", search);
+
 
 function convertToFahrenheit(event) {
   event.preventDefault();
