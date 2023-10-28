@@ -116,7 +116,7 @@ function displayHourlyforecast(hourlyData) {
                       <p class="card-text">
                         <img src="http://openweathermap.org/img/wn/${
                           forecastHour.weather[0].icon
-                        }@2x.png" id="icon" </img>
+                        }@2x.png" id="hourly-icon" </img>
                       </p>
                     </div>
 
@@ -168,7 +168,7 @@ function displayForecast(response) {
                       <p class="card-text">               
                         <img src="http://openweathermap.org/img/wn/${
                           forecastDay.weather[0].icon
-                        }@2x.png" id="icon"  </img>
+                        }@2x.png" id="forecast-icon"  </img>
                       </p>
                     </div>
 
