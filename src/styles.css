@@ -11,10 +11,8 @@ body {
 }
 
 h1 {
-  margin: 0 auto;
   text-align: center;
-  top: 0;
-  width: 100%;
+  font-size: 2rem;
 }
 
 h2 {
@@ -50,12 +48,24 @@ a {
   border-radius: 29px;
   box-shadow: -5px -5px 9px rgba(255, 255, 255, 0.5),
     5px 5px 9px rgba(94, 104, 121, 0.3);
+  margin: 10px; /*Add spacing between cards */
+  max-width: 250px; /* Limit card with for uniformity */
 }
 
 .card-body {
   color: white;
 }
 
+.card-body img {
+  max-width: 70%;
+  margin: 0 auto;
+  display: block;
+  height: auto; /* Ensures images scale properly */
+}
+
+.card-footer {
+  font-size: 18px; /* Slightly smaller text for footer */
+}
 .card-footer,
 .time-day {
   text-align: center;
@@ -67,10 +77,10 @@ a {
 }
 
 .container {
-  text-align: right;
   border: none;
-  padding: 100px;
+  padding: 20px;
   font-family: "Source Code Pro", monospace;
+  text-align: left;
 }
 
 .current-location {
@@ -83,30 +93,23 @@ a {
   text-transform: capitalize;
 }
 
-#icon{
-  bottom: 10px;
-  float: top;
-  height: 200px;
-  position: relative;
-  right: 400px;
+#icon {
+  height: 100px;
   width: 200px;
-  
+  position: static;
+  margin: 0 auto;
+  display: block;
 }
 
-.Five-Day {
+.Five-Day,
+.Three-Hour {
   background-color: #2d6884;
   border: none;
   border-radius: 40px;
   color: black;
-  font-size: 35px;
-}
-
-.Hourly {
-  background-color: #2d6884;
-  border: none;
-  border-radius: 40px;
-  color: black;
-  font-size: 35px;
+  font-size: 1.5rem;
+  padding: 10px;
+  text-align: center;
 }
 
 .location-time {
@@ -119,12 +122,15 @@ a {
   font-size: 25px;
 }
 
-#precip, #wind {
+#precip,
+#wind {
   font-size: 35px;
 }
 
 .row {
-  border: none;
+  gap: 15px; /* Add space between columns */
+  margin: 0 auto;
+  justify-content: center;
 }
 
 .time-day {
@@ -134,6 +140,6 @@ a {
 
 .Weather {
   color: white;
-  font-size: 50px;
-  padding-bottom: 30px;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
 }

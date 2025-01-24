@@ -5,20 +5,30 @@ function search(event) {
 }
 
 function searchCity(city) {
-  let apiKey = "6f578b96aa9505bcce148ac22cb85794";
+  let apiKey = "082d2f0ddfc4d383f1612a6be862696d";
   let units = "imperial";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(displayTemperature);
+
+  getForecast(city);
 }
-function getForecast(coordinates) {
-  console.log(coordinates);
-  let apiKey = "6f578b96aa9505bcce148ac22cb85794";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperial`;
-  axios.get(apiUrl).then((response) => {
-    displayForecast(response);
-    displayHourlyforecast(response.data.hourly); //Display hourly forecast
-  });
+function getForecast(city) {
+  console.log("Fetching forecast for city:", city); // Debugging log
+  let apiKey = "082d2f0ddfc4d383f1612a6be862696d";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=imperial`;
+
+  axios
+    .get(apiUrl)
+    .then((response) => {
+      console.log("3-Hour Forecast API Response:", response.data); // Debugging log
+      displayHourlyforecast(response.data.list.slice(0, 5)); // Display hourly forecast
+      displayDailyForecast(response.data.list); // Process and display daily forecast
+    })
+    .catch((error) => {
+      console.error("Error fetching forecast data:", error); // Debugging log
+    });
 }
+
 function displayTemperature(response) {
   console.log(response);
   let cityName = document.querySelector("#city");
@@ -42,11 +52,11 @@ function displayTemperature(response) {
   let windElement = document.querySelector("#wind");
   windElement.innerHTML = Math.round(response.data.wind.speed);
 
-  getForecast(response.data.coord);
+  getForecast(response.data.name);
 }
 
 function showPosition(position) {
-  let apiKey = "6f578b96aa9505bcce148ac22cb85794";
+  let apiKey = "082d2f0ddfc4d383f1612a6be862696d";
   let units = "imperial";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(displayTemperature);
@@ -96,17 +106,17 @@ function formatHour(timestamp) {
 function displayHourlyforecast(hourlyData) {
   let hourlyforecastElement = document.querySelector("#hour-forecast");
 
-  let hourlyforecastHTML = `<div class="row">
-                <h1 class="Hourly Forecast border border-5">
-                  <span class="Hourly"> Hourly Forecast </span>
+  let hourlyforecastHTML = `<div class="row justify-content-center g-3">
+                <h1 class="Three-Hour Forecast border border-5"> 
+                  <span class="Three-Hour"> Upcoming Weather </span>
                 </h1>`;
 
   hourlyData = hourlyData.slice(0, 5);
   hourlyData.forEach((forecastHour) => {
     console.log({ forecastHour });
     hourlyforecastHTML += `
-                <div class="card-group col">
-                  <div class="card">
+                <div class="col-12 col-sm-6 col-md-4 col-lg-2 d-flex align-items-stretch">
+                  <div class="card text-center mb-3">
                     <div class="card-body">
                       <h2 class="time-day">
                       <div class="weather-forecast-hour">
@@ -122,7 +132,7 @@ function displayHourlyforecast(hourlyData) {
 
                     <div class="card-footer">
                       <small class="degree">${Math.round(
-                        forecastHour.temp
+                        forecastHour.main.temp
                       )}°</small>
                     </div>
                   </div>
@@ -140,49 +150,53 @@ function formatDay(timestamp) {
 
   return days[day];
 }
-function displayForecast(response) {
-  console.log(response.data);
-  let forecast = response.data.daily;
-
-  let forecastElement = document.querySelector("#daily-forecast");
+function displayDailyForecast(forecastData) {
+  //console.log(response.data);
+  let dailyData = {};
+  forecastData.forEach((entry) => {
+    let date = new Date(entry.dt * 1000).toDateString(); // Group by date
+    if (!dailyData[date]) {
+      dailyData[date] = [];
+    }
+    dailyData[date].push(entry);
+  });
 
   let forecastHTML = `<div class="row"> 
   <h1 class="Five-Day Forecast border border-5">
   <span class="Five-Day"> 5-Day Forecast</span> 
   </h1>`;
 
-  forecast.forEach(function (forecastDay, index) {
+  Object.keys(dailyData).forEach((date, index) => {
     if (index < 5) {
-      forecastHTML =
-        forecastHTML +
-        `
+      //Limit to 5 days
+      let dayData = dailyData[date];
+      let temps = dayData.map((d) => d.main.temp);
+      let maxTemp = Math.max(...temps);
+      let minTemp = Math.min(...temps);
+
+      forecastHTML += `
                 <div class="card-group col">
                   <div class="card">
                     <div class="card-body">
                       <h2 class="time-day">
-                        <div class="weather-forecast-date"> ${formatDay(
-                          forecastDay.dt
-                        )}
+                        <div class="weather-forecast-date"> ${date}
                         </div>
                       </h2>
                       <p class="card-text">               
                         <img src="http://openweathermap.org/img/wn/${
-                          forecastDay.weather[0].icon
+                          dayData[0].weather[0].icon
                         }@2x.png" id="forecast-icon"  </img>
                       </p>
                     </div>
 
                     <div class="card-footer">
                       <small class="degree">
-                      <div class="weather-forecast-temperatures">  
-                       <span class="weather-forecast-temperature-max">
-                        ${Math.round(
-                          forecastDay.temp.max
-                        )}°</span>/<span class="weather-forecast-temperature-min">${Math.round(
-          forecastDay.temp.min
-        )}°
+                      <span class="weather-forecast-temperature-max">
+                        ${Math.round(maxTemp)}°</span>/
+                        <span class="weather-forecast-temperature-min">${Math.round(
+                          minTemp
+                        )}°
                       </span>
-                      </div>
                       </small>
                     </div>
                   </div>
@@ -190,32 +204,40 @@ function displayForecast(response) {
     }
   });
 
-  forecastHTML = forecastHTML + `</div>`;
+  forecastHTML += `</div>`;
+  let forecastElement = document.querySelector("#daily-forecast");
   forecastElement.innerHTML = forecastHTML;
 }
-function formatTime(){
-let now = new Date();
-let currentDay = now.getDay();
-let hours = now.getHours().toString().padStart(2, "0");
-let minutes = now.getMinutes().toString().padStart(2, "0");
+function formatTime() {
+  let now = new Date();
+  let currentDay = now.getDay();
+  let hours = now.getHours().toString().padStart(2, "0");
+  let minutes = now.getMinutes().toString().padStart(2, "0");
 
-let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-let currentDayName = days[currentDay];
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let currentDayName = days[currentDay];
 
-let period = "AM";
-if (hours >= 12) {
-  period = "PM";
-  if (hours > 12) {
-    hours -= 12;
+  let period = "AM";
+  if (hours >= 12) {
+    period = "PM";
+    if (hours > 12) {
+      hours -= 12;
+    }
   }
-}
-let currentTime = document.querySelector("#time");
-currentTime.innerHTML = `${currentDayName}, ${hours}:${minutes} ${period}`;
+  let currentTime = document.querySelector("#time");
+  currentTime.innerHTML = `${currentDayName}, ${hours}:${minutes} ${period}`;
 }
 formatTime();
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", search);
-
 
 function convertToFahrenheit(event) {
   event.preventDefault();
