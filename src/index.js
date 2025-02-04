@@ -154,7 +154,7 @@ function displayDailyForecast(forecastData) {
   //console.log(response.data);
   let dailyData = {};
   forecastData.forEach((entry) => {
-    let date = new Date(entry.dt * 1000).toDateString(); // Group by date
+    let date = formatDay(entry.dt); // Showing the day of the week
     if (!dailyData[date]) {
       dailyData[date] = [];
     }
@@ -211,7 +211,7 @@ function displayDailyForecast(forecastData) {
 function formatTime() {
   let now = new Date();
   let currentDay = now.getDay();
-  let hours = now.getHours().toString().padStart(2, "0");
+  let hours = now.getHours();
   let minutes = now.getMinutes().toString().padStart(2, "0");
 
   let days = [
@@ -225,13 +225,12 @@ function formatTime() {
   ];
   let currentDayName = days[currentDay];
 
-  let period = "AM";
-  if (hours >= 12) {
-    period = "PM";
-    if (hours > 12) {
-      hours -= 12;
-    }
-  }
+  //Determine AM/PM
+  let period = hours >= 12 ? "PM" : "AM";
+
+  // Convert 0 (midnight) to 12 AM and 13-23 to 1-11 PM
+  hours = hours % 12 || 12;
+
   let currentTime = document.querySelector("#time");
   currentTime.innerHTML = `${currentDayName}, ${hours}:${minutes} ${period}`;
 }

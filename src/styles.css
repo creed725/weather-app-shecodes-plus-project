@@ -2,10 +2,16 @@ body {
   background-image: url("../images/KC.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
   font-size: 40px;
   font-weight: 700;
-  background-position: top;
+  
 
   color: #ffff;
 }
@@ -49,7 +55,7 @@ a {
   box-shadow: -5px -5px 9px rgba(255, 255, 255, 0.5),
     5px 5px 9px rgba(94, 104, 121, 0.3);
   margin: 10px; /*Add spacing between cards */
-  max-width: 250px; /* Limit card with for uniformity */
+  max-width: -900px; /* Limit card with for uniformity */
 }
 
 .card-body {
@@ -94,9 +100,8 @@ a {
 }
 
 #icon {
-  height: 100px;
-  width: 200px;
-  position: static;
+  height: auto;
+  max-width: 100px;
   margin: 0 auto;
   display: block;
 }
